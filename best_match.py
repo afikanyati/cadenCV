@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def fit(img, templates, start_percent, stop_percent, threshold):
+def match(img, templates, start_percent, stop_percent, threshold):
     img_width, img_height = img.shape[::-1]
     best_location_count = -1
     best_locations = []

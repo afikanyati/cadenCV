@@ -2,51 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="508a06d0-1d37-45b9-ab80-ca7b32d4f8de" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bar.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/homography.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/rectangle.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/barline.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/clef/bass.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/clef/treble.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/a_bass.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/a_flat_bass.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/b_bass.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/b_flat_bass.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/c#_bass.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/c_flat_bass.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/d_bass.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/d_flat_bass.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/e_bass.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/e_flat_bass.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/f#_bass.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/f_bass.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/g_bass.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/g_flat_bass.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/a_flat_treble.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/a_treble.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/b_flat_treble.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/b_treble.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/c#_treble.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/c_flat_treble.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/d_flat_treble.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/d_treble.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/e_flat_treble.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/e_treble.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/f# _treble.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/f_treble.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/g_flat_treble.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/g_treble.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/rest/eigth_rest.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/rest/half_rest.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/rest/sixteenth_rest.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/staff_recs_img.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/template/rest/whole_rest.jpg" afterPath="$PROJECT_DIR$/resources/template/rest/whole_rest.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/template/time/44.jpg" afterPath="$PROJECT_DIR$/resources/template/time/44.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/best_fit.py" afterPath="$PROJECT_DIR$/best_fit.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/best_fit.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/staff.py" afterPath="$PROJECT_DIR$/staff.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -60,10 +17,22 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1005">
-              <caret line="230" column="13" lean-forward="true" selection-start-line="230" selection-start-column="13" selection-end-line="230" selection-end-column="13" />
+            <state relative-caret-position="53">
+              <caret line="457" column="20" lean-forward="true" selection-start-line="457" selection-start-column="20" selection-end-line="457" selection-end-column="20" />
               <folding>
                 <element signature="e#499#509#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="best_match.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/best_match.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="20" lean-forward="true" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -162,12 +131,12 @@
         <option value="$USER_HOME$/Downloads/SheetVision-master/main.py" />
         <option value="$USER_HOME$/Downloads/SheetVision-master/rectangle.py" />
         <option value="$PROJECT_DIR$/rectangle.py" />
-        <option value="$PROJECT_DIR$/best_fit.py" />
         <option value="$PROJECT_DIR$/staff.py" />
         <option value="$PROJECT_DIR$/bar.py" />
         <option value="$PROJECT_DIR$/box.py" />
         <option value="$PROJECT_DIR$/note.py" />
         <option value="$PROJECT_DIR$/primitive.py" />
+        <option value="$PROJECT_DIR$/best_fit.py" />
         <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
@@ -352,9 +321,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="8" column="39" lean-forward="false" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -494,16 +461,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/best_fit.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-18">
-          <caret line="20" column="34" lean-forward="false" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/staff.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="584">
@@ -530,10 +487,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/best_fit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/best_match.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="20" lean-forward="true" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1005">
-          <caret line="230" column="13" lean-forward="true" selection-start-line="230" selection-start-column="13" selection-end-line="230" selection-end-column="13" />
+        <state relative-caret-position="53">
+          <caret line="457" column="20" lean-forward="true" selection-start-line="457" selection-start-column="20" selection-end-line="457" selection-end-column="20" />
           <folding>
             <element signature="e#499#509#0" expanded="true" />
           </folding>

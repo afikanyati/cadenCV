@@ -27,7 +27,7 @@ from collections import Counter
 from copy import deepcopy
 from PIL import Image
 
-from best_fit import fit
+from best_match import match
 from box import BoundingBox
 from staff import Staff
 from primitive import Primitive
@@ -461,7 +461,7 @@ def open_file(path):
 
 
 def locate_templates(img, templates, start, stop, threshold):
-    locations, scale = fit(img, templates, start, stop, threshold)
+    locations, scale = match(img, templates, start, stop, threshold)
     img_locations = []
     for i in range(len(templates)):
         w, h = templates[i].shape[::-1]
