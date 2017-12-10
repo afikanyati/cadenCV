@@ -1,7 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="508a06d0-1d37-45b9-ab80-ca7b32d4f8de" name="Default" comment="" />
+    <list default="true" id="508a06d0-1d37-45b9-ab80-ca7b32d4f8de" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bar.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/homography.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rectangle.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/barline.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/clef/bass.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/clef/treble.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/a_bass.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/a_flat_bass.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/b_bass.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/b_flat_bass.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/c#_bass.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/c_flat_bass.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/d_bass.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/d_flat_bass.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/e_bass.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/e_flat_bass.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/f#_bass.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/f_bass.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/g_bass.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/bass/g_flat_bass.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/a_flat_treble.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/a_treble.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/b_flat_treble.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/b_treble.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/c#_treble.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/c_flat_treble.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/d_flat_treble.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/d_treble.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/e_flat_treble.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/e_treble.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/f# _treble.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/f_treble.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/g_flat_treble.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/key/treble/g_treble.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/rest/eigth_rest.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/rest/half_rest.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/template/rest/sixteenth_rest.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/staff_recs_img.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/template/rest/whole_rest.jpg" afterPath="$PROJECT_DIR$/resources/template/rest/whole_rest.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/template/time/44.jpg" afterPath="$PROJECT_DIR$/resources/template/time/44.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/best_fit.py" afterPath="$PROJECT_DIR$/best_fit.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/staff.py" afterPath="$PROJECT_DIR$/staff.py" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,22 +60,10 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2055">
-              <caret line="137" column="16" lean-forward="false" selection-start-line="137" selection-start-column="16" selection-end-line="137" selection-end-column="16" />
+            <state relative-caret-position="1005">
+              <caret line="230" column="13" lean-forward="true" selection-start-line="230" selection-start-column="13" selection-end-line="230" selection-end-column="13" />
               <folding>
-                <element signature="e#445#455#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="best_fit.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/best_fit.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="8" column="39" lean-forward="false" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#499#509#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -38,8 +72,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Downloads/SheetVision-master/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1050">
-              <caret line="79" column="26" lean-forward="false" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
+            <state relative-caret-position="-2824">
+              <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="38" selection-end-column="70" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -47,23 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="best_fit.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Downloads/SheetVision-master/best_fit.py">
+      <file leaf-file-name="primitive.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/primitive.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="18" column="34" lean-forward="false" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="note.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Downloads/SheetVision-master/note.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="69" lean-forward="false" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
+            <state relative-caret-position="15">
+              <caret line="1" column="34" lean-forward="false" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -72,18 +94,28 @@
       <file leaf-file-name="staff.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/staff.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="16" lean-forward="false" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+            <state relative-caret-position="584">
+              <caret line="39" column="29" lean-forward="false" selection-start-line="38" selection-start-column="4" selection-end-line="39" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rectangle.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rectangle.py">
+      <file leaf-file-name="bar.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bar.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="39" column="21" lean-forward="false" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+            <state relative-caret-position="90">
+              <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="box.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/box.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="675">
+              <caret line="45" column="26" lean-forward="false" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -103,7 +135,23 @@
       <find>zip</find>
       <find>hello</find>
       <find>np.</find>
+      <find>Rectangle</find>
+      <find>rec</find>
+      <find>found</find>
+      <find>deepcopy</find>
+      <find>format</find>
+      <find>deepco</find>
+      <find>ims</find>
+      <find>set</find>
+      <find>None</find>
+      <find>/</find>
+      <find>note_defs</find>
+      <find>note_grou</find>
+      <find>locate_images</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -112,20 +160,25 @@
         <option value="$PROJECT_DIR$/x.py" />
         <option value="$PROJECT_DIR$/hello.py" />
         <option value="$USER_HOME$/Downloads/SheetVision-master/main.py" />
-        <option value="$PROJECT_DIR$/staff.py" />
-        <option value="$PROJECT_DIR$/best_fit.py" />
         <option value="$USER_HOME$/Downloads/SheetVision-master/rectangle.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/rectangle.py" />
+        <option value="$PROJECT_DIR$/best_fit.py" />
+        <option value="$PROJECT_DIR$/staff.py" />
+        <option value="$PROJECT_DIR$/bar.py" />
+        <option value="$PROJECT_DIR$/box.py" />
+        <option value="$PROJECT_DIR$/note.py" />
+        <option value="$PROJECT_DIR$/primitive.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="3" />
+    <option name="x" value="408" />
     <option name="y" value="22" />
-    <option name="width" value="1437" />
+    <option name="width" value="1070" />
     <option name="height" value="856" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -246,16 +299,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="3" y="22" width="1437" height="856" extended-state="0" />
+    <frame x="408" y="22" width="1070" height="856" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22150537" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3298292" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11867704" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298292" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298292" sideWeight="0.50292397" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298292" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298292" sideWeight="0.49707603" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298292" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3298292" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24946237" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298292" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -279,7 +333,7 @@
           <line>13</line>
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -289,7 +343,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#445#455#0" expanded="true" />
+            <element signature="e#499#509#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -326,9 +380,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="18" column="34" lean-forward="true" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -344,9 +396,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="39" column="21" lean-forward="true" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -369,26 +419,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Downloads/SheetVision-master/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="79" column="26" lean-forward="false" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/best_fit.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="39" lean-forward="false" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/SheetVision-master/rectangle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -396,36 +426,104 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Downloads/SheetVision-master/note.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="69" lean-forward="false" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/clef_recs_img.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/staff.py">
+    <entry file="file://$USER_HOME$/Downloads/SheetVision-master/best_fit.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="16" lean-forward="false" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+        <state relative-caret-position="15">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rectangle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="39" column="21" lean-forward="false" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+        <state relative-caret-position="225">
+          <caret line="15" column="44" lean-forward="true" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staff_boxes_img.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/box.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="45" column="26" lean-forward="false" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Downloads/SheetVision-master/best_fit.py">
+    <entry file="file://$USER_HOME$/Downloads/SheetVision-master/note.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="34" lean-forward="false" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+        <state relative-caret-position="660">
+          <caret line="44" column="27" lean-forward="true" selection-start-line="44" selection-start-column="27" selection-end-line="44" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/note.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="26" lean-forward="true" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/best_fit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-18">
+          <caret line="20" column="34" lean-forward="false" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staff.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="584">
+          <caret line="39" column="29" lean-forward="false" selection-start-line="38" selection-start-column="4" selection-end-line="39" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/primitive.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="34" lean-forward="false" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/SheetVision-master/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2824">
+          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="38" selection-end-column="70" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -434,10 +532,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2055">
-          <caret line="137" column="16" lean-forward="false" selection-start-line="137" selection-start-column="16" selection-end-line="137" selection-end-column="16" />
+        <state relative-caret-position="1005">
+          <caret line="230" column="13" lean-forward="true" selection-start-line="230" selection-start-column="13" selection-end-line="230" selection-end-column="13" />
           <folding>
-            <element signature="e#445#455#0" expanded="true" />
+            <element signature="e#499#509#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -12,6 +12,9 @@ __author__ = "Afika Nyati"
 __email__ = "anyati@mit.edu"
 __status__ = "Prototype"
 
+# cv2.imshow("Input", no_staff_img)
+# cv2.waitKey(0)
+
 #-------------------------------------------------------------------------------
 # Import Statements
 #-------------------------------------------------------------------------------
@@ -25,60 +28,34 @@ from copy import deepcopy
 from PIL import Image
 
 from best_fit import fit
-from rectangle import Rectangle
+from box import BoundingBox
 from staff import Staff
+from primitive import Primitive
+from bar import Bar
 
 #-------------------------------------------------------------------------------
-# File Paths
+# Template Paths
 #-------------------------------------------------------------------------------
 
-clef_paths = [
-    "resources/template/clefs/treble.jpg",
-    "resources/template/clefs/bass.jpg"
-]
 
-time_paths = [
-    "resources/template/time/common.jpg",
-    "resources/template/time/44.jpg",
-    "resources/template/time/34.jpg",
-    "resources/template/time/24.jpg",
-    "resources/template/time/68.jpg"
-]
-
-key_paths = {
+clef_paths = {
     "treble": [
-        "resources/template/key/treble/a_flat_treble.jpg",
-        "resources/template/key/treble/a_treble.jpg",
-        "resources/template/key/treble/b_flat_treble.jpg",
-        "resources/template/key/treble/b_treble.jpg",
-        "resources/template/key/treble/c_flat_treble.jpg",
-        "resources/template/key/treble/c_flat_treble.jpg"
-        "resources/template/key/treble/c#_treble.jpg",
-        "resources/template/key/treble/d_flat_treble.jpg",
-        "resources/template/key/treble/d_treble.jpg",
-        "resources/template/key/treble/e_flat_treble.jpg",
-        "resources/template/key/treble/e_treble.jpg",
-        "resources/template/key/treble/f_treble.jpg",
-        "resources/template/key/treble/f#_treble.jpg",
-        "resources/template/key/treble/g_flat_treble.jpg",
-        "resources/template/key/treble/g_treble.jpg"
+        "resources/template/clef/treble_1.jpg",
+        "resources/template/clef/treble_2.jpg"
     ],
     "bass": [
-        "resources/template/key/bass/a_flat_treble.jpg",
-        "resources/template/key/bass/a_treble.jpg",
-        "resources/template/key/bass/b_flat_treble.jpg",
-        "resources/template/key/bass/b_treble.jpg",
-        "resources/template/key/bass/c_flat_treble.jpg",
-        "resources/template/key/bass/c_flat_treble.jpg"
-        "resources/template/key/bass/c#_treble.jpg",
-        "resources/template/key/bass/d_flat_treble.jpg",
-        "resources/template/key/bass/d_treble.jpg",
-        "resources/template/key/bass/e_flat_treble.jpg",
-        "resources/template/key/bass/e_treble.jpg",
-        "resources/template/key/bass/f_treble.jpg",
-        "resources/template/key/bass/f#_treble.jpg",
-        "resources/template/key/bass/g_flat_treble.jpg",
-        "resources/template/key/bass/g_treble.jpg"
+        "resources/template/clef/bass_1.jpg"
+    ]
+}
+
+accidental_paths = {
+    "sharp": [
+        "resources/template/sharp-line.png",
+        "resources/template/sharp-space.png"
+    ],
+    "flat": [
+        "resources/template/flat-line.png",
+        "resources/template/flat-space.png"
     ]
 }
 
@@ -102,34 +79,176 @@ note_paths = {
 }
 
 rest_paths = {
-    "eighth": "resources/template/rest/eighth_rest.jpg",
-    "quarter": "resources/template/rest/quarter_rest.jpg",
-    "half": "resources/template/rest/half_rest.jpg",
-    "whole": "resources/template/rest/whole_rest.jpg"
-}
-
-accidental_paths = {
-    "sharp": [
-        "resources/template/sharp-line.png",
-        "resources/template/sharp-space.png"
+    "eighth": ["resources/template/rest/eighth_rest.jpg"],
+    "quarter": ["resources/template/rest/quarter_rest.jpg"],
+    "half": ["resources/template/rest/half_rest_1.jpg",
+            "resources/template/rest/half_rest_2.jpg"
     ],
-    "flat": [
-        "resources/template/flat-line.png",
-        "resources/template/flat-space.png"
-    ]
+    "whole": ["resources/template/rest/whole_rest.jpg"]
 }
 
-barline_path = "resources/template/barline.png"
+barline_paths = ["resources/template/barline.jpg"]
 
-clef_imgs = [cv2.imread(clef_file, 0) for clef_file in clef_paths]
+#-------------------------------------------------------------------------------
+# Template Images
+#-------------------------------------------------------------------------------
 
-clef_lower, clef_upper, clef_thresh = 50, 150, 0.77
+# Clefs
+clef_imgs = {
+    "treble": [cv2.imread(clef_file, 0) for clef_file in clef_paths["treble"]],
+    "bass": [cv2.imread(clef_file, 0) for clef_file in clef_paths["bass"]]
+}
+
+# Time Signatures
+time_imgs = {
+    "common": [cv2.imread(time, 0) for time in ["resources/template/time/common.jpg"]],
+    "44": [cv2.imread(time, 0) for time in ["resources/template/time/44.jpg"]],
+    "34": [cv2.imread(time, 0) for time in ["resources/template/time/34.jpg"]],
+    "24": [cv2.imread(time, 0) for time in ["resources/template/time/24.jpg"]],
+    "68": [cv2.imread(time, 0) for time in ["resources/template/time/68.jpg"]]
+}
+
+# Accidentals
+sharp_imgs = [cv2.imread(sharp_files, 0) for sharp_files in accidental_paths["sharp"]]
+flat_imgs = [cv2.imread(flat_file, 0) for flat_file in accidental_paths["flat"]]
+
+# Notes
+quarter_note_imgs = [cv2.imread(quarter, 0) for quarter in note_paths["quarter"]]
+half_note_imgs = [cv2.imread(half, 0) for half in note_paths["half"]]
+whole_note_imgs = [cv2.imread(whole, 0) for whole in note_paths['whole']]
+
+# Rests
+eighth_rest_imgs = [cv2.imread(eighth, 0) for eighth in rest_paths["eighth"]]
+quarter_rest_imgs = [cv2.imread(quarter, 0) for quarter in rest_paths["quarter"]]
+half_rest_imgs = [cv2.imread(half, 0) for half in rest_paths["half"]]
+whole_rest_imgs = [cv2.imread(whole, 0) for whole in rest_paths['whole']]
+
+# Bar line
+bar_imgs = [cv2.imread(barline, 0) for barline in barline_paths]
+
+
+#-------------------------------------------------------------------------------
+# Template Thresholds
+#-------------------------------------------------------------------------------
+
+# Clefs
+clef_lower, clef_upper, clef_thresh = 50, 150, 0.88
+
+# Time
+time_lower, time_upper, time_thresh = 50, 150, 0.88
+
+# Accidentals
 sharp_lower, sharp_upper, sharp_thresh = 50, 150, 0.70
 flat_lower, flat_upper, flat_thresh = 50, 150, 0.77
-quarter_lower, quarter_upper, quarter_thresh = 50, 150, 0.70
-half_lower, half_upper, half_thresh = 50, 150, 0.70
-whole_lower, whole_upper, whole_thresh = 50, 150, 0.70
 
+# Notes
+quarter_note_lower, quarter_note_upper, quarter_note_thresh = 50, 150, 0.70
+half_note_lower, half_note_upper, half_note_thresh = 50, 150, 0.70
+whole_note_lower, whole_note_upper, whole_note_thresh = 50, 150, 0.70
+
+# Rests
+eighth_rest_lower, eighth_rest_upper, eighth_rest_thresh = 50, 150, 0.70
+quarter_rest_lower, quarter_rest_upper, quarter_rest_thresh = 50, 150, 0.70
+half_rest_lower, half_rest_upper, half_rest_thresh = 50, 150, 0.80
+whole_rest_lower, whole_rest_upper, whole_rest_thresh = 50, 150, 0.80
+
+# Bar line
+bar_lower, bar_upper, bar_thresh = 50, 150, 0.85
+
+#-------------------------------------------------------------------------------
+# General Functions
+#-------------------------------------------------------------------------------
+
+pitch_to_MIDI = {
+    "C8": 108,
+    "B7": 107,
+    "A#7": 106,
+    "A7": 105,
+    "G#7": 104,
+    "G7": 103,
+    "F#7": 102,
+    "F7": 101,
+    "E7": 100,
+    "D#7": 99,
+    "D7": 98,
+    "C#7": 97,
+    "C7": 96,
+    "B6": 95,
+    "A#6": 94,
+    "A6": 93,
+    "G#6": 92,
+    "G6": 91,
+    "F#6": 90,
+    "F6": 89,
+    "E6": 88,
+    "D#6": 87,
+    "D6": 86,
+    "C#6": 85,
+    "C6": 84,
+    "B5": 83,
+    "A#5": 82,
+    "A5": 81,
+    "G#5": 80,
+    "G5": 79,
+    "F#5": 78,
+    "F5": 77,
+    "E5": 76,
+    "D#5": 75,
+    "D5": 74,
+    "C#5": 73,
+    "C5": 72,
+    "B4": 71,
+    "A#4": 70,
+    "A4": 69,
+    "G#4": 68,
+    "G4": 67,
+    "F#4": 66,
+    "F4": 65,
+    "E4": 64,
+    "D#4": 63,
+    "D4": 62,
+    "C#4": 61,
+    "C4": 60,
+    "B3": 59,
+    "A#3": 58,
+    "A3": 57,
+    "G#3": 56,
+    "G3": 55,
+    "F#3": 54,
+    "F3": 53,
+    "E3": 52,
+    "D#3": 51,
+    "D3": 50,
+    "C#3": 49,
+    "C3": 48,
+    "B2": 47,
+    "A#2": 46,
+    "A2": 45,
+    "G#2": 44,
+    "G2": 43,
+    "F#2": 42,
+    "F2": 41,
+    "E2": 40,
+    "D#2": 39,
+    "D2": 38,
+    "C#2": 37,
+    "C2": 36,
+    "B1": 35,
+    "A#1": 34,
+    "A1": 33,
+    "G#1": 32,
+    "G1": 31,
+    "F#1": 30,
+    "F1": 29,
+    "E1": 28,
+    "D#1": 27,
+    "D1": 26,
+    "C#1": 25,
+    "C1": 24,
+    "B0": 23,
+    "A#0": 22,
+    "A0": 21
+}
 
 #-------------------------------------------------------------------------------
 # General Functions
@@ -341,34 +460,36 @@ def open_file(path):
     img.show()
 
 
-def locate_images(img, templates, width, height, threshold):
-    locations = fit(img, templates, width, height, threshold)
+def locate_templates(img, templates, start, stop, threshold):
+    locations, scale = fit(img, templates, start, stop, threshold)
     img_locations = []
     for i in range(len(templates)):
-        img_locations.append([Rectangle(pt[0], pt[1], width, height) for pt in zip(*locations[i][::-1])])
-
+        w, h = templates[i].shape[::-1]
+        w *= scale
+        h *= scale
+        img_locations.append([BoundingBox(pt[0], pt[1], w, h) for pt in zip(*locations[i][::-1])])
     return img_locations
 
 
-def merge_recs(recs, threshold):
-    filtered_recs = []
-    while len(recs) > 0:
-        r = recs.pop(0)
-        recs.sort(key=lambda rec: rec.distance(r))
+def merge_boxes(boxes, threshold):
+    filtered_boxes = []
+    while len(boxes) > 0:
+        r = boxes.pop(0)
+        boxes.sort(key=lambda box: box.distance(r))
         merged = True
-        while(merged):
+        while (merged):
             merged = False
             i = 0
-            for _ in range(len(recs)):
-                if r.overlap(recs[i]) > threshold or recs[i].overlap(r) > threshold:
-                    r = r.merge(recs.pop(i))
+            for _ in range(len(boxes)):
+                if r.overlap(boxes[i]) > threshold or boxes[i].overlap(r) > threshold:
+                    r = r.merge(boxes.pop(i))
                     merged = True
-                elif recs[i].distance(r) > r.w/2 + recs[i].w/2:
+                elif boxes[i].distance(r) > r.w / 2 + boxes[i].w / 2:
                     break
                 else:
                     i += 1
-        filtered_recs.append(r)
-    return filtered_recs
+        filtered_boxes.append(r)
+    return filtered_boxes
 
 
 if __name__ == "__main__":
@@ -383,7 +504,7 @@ if __name__ == "__main__":
 
     # ============ Read Image ============
     # img_file = sys.argv[1:][0]
-    img_file ='resources/samples/dream.png'
+    img_file ='resources/samples/fire.jpg'
     img = cv2.imread(img_file, 0)
 
     # ============ Noise Removal ============
@@ -402,6 +523,8 @@ if __name__ == "__main__":
 
     # angle, img = deskew(img)
     # print("[INFO] Deskew Angle: {:.3f}".format(angle))
+    # cv2.imshow("Input", img)
+    # cv2.waitKey(0)
 
     # ============ Reference Lengths ============
     # Reference lengths staff line thickness (staffline_height)
@@ -436,39 +559,36 @@ if __name__ == "__main__":
     print("[INFO] Found all staff line horizontal extremes")
 
     # ============ Show Detected Staffs ============
-    staff_recs = []
-    isolated_staff_images = []  # Cropped Staff Images
+    staffs = []
     half_dist_between_staffs = (all_staffline_vertical_indices[1][0][0] - all_staffline_vertical_indices[0][4][line_width - 1])//2
 
     for i in range(len(all_staffline_vertical_indices)):
-        # Create Bounding Rectangle
+        # Create Bounding Box
         x = all_staffline_horizontal_indices[i][0]
         y = all_staffline_vertical_indices[i][0][0]
         width = all_staffline_horizontal_indices[i][1] - x
         height = all_staffline_vertical_indices[i][4][line_width - 1] - y
-        staff_rec = Rectangle(x, y, width, height)
-        staff_recs.append(staff_rec)
+        staff_box = BoundingBox(x, y, width, height)
 
         # Create Cropped Staff Image
         staff_img = img[max(0, y - half_dist_between_staffs): min(y+ height + half_dist_between_staffs, img.shape[0] - 1), x:x+width]
-        isolated_staff_images.append(staff_img)
+        staff = Staff(all_staffline_vertical_indices[i], staff_box, staff_img)
+        staffs.append(staff)
 
-    staff_recs_img = img.copy()
-    staff_recs_img = cv2.cvtColor(staff_recs_img, cv2.COLOR_GRAY2RGB)
+    staff_boxes_img = img.copy()
+    staff_boxes_img = cv2.cvtColor(staff_boxes_img, cv2.COLOR_GRAY2RGB)
     red = (0, 0, 255)
-    rec_thickness = 2
-    for r in staff_recs:
-        r.draw(staff_recs_img, red, rec_thickness)
+    box_thickness = 2
+    for staff in staffs:
+        box = staff.getBox()
+        box.draw(staff_boxes_img, red, box_thickness)
 
-    cv2.imwrite('staff_recs_img.png', staff_recs_img)
-    open_file('staff_recs_img.png')
-    print("[INFO] Output image showing detected staffs")
-
-
-
+    cv2.imwrite('staff_boxes_img.png', staff_boxes_img)
+    open_file('staff_boxes_img.png')
+    print("[INFO] Outputting image showing detected staffs")
 
     #-------------------------------------------------------------------------------
-    # Symbol Segmentation
+    # Symbol Segmentation, Object Recognition, and Semantic Reconstruction
     #-------------------------------------------------------------------------------
 
     # The score is then divided into regions of interest to localize and isolate the musical primitives.
@@ -478,79 +598,251 @@ if __name__ == "__main__":
     # Find all primitives on each stave first
     # then move from left to right and create structure
 
-    # ============ Determine Clefs ============
-    clef_height = 119
-    height = (199/119) * staff_recs[0].get_height()
-    print("clef height: ", height)
-    width = height/clef_imgs[0].shape[1] * clef_imgs[0].shape[1]
-    print("clef width: ", width)
+    # ============ Determine Clef, Time Signature ============
 
-    print("[INFO] Matching clef image...")
-    clef_recs = locate_images(isolated_staff_images[0], [clef_imgs[0]], width, height, clef_thresh)
+    # for i in range(len(staffs)):
+    #     red = (0, 0, 255)
+    #     box_thickness = 2
+    #
+    #     # ------- Clef -------
+    #     for clef in clef_imgs:
+    #         print("[INFO] Matching {} clef template on staff".format(clef), i + 1)
+    #         clef_boxes = locate_templates(staffs[i].getImage(), clef_imgs[clef], clef_lower, clef_upper, clef_thresh)
+    #
+    #         print("[INFO] Merging {} clef template results...".format(clef))
+    #         clef_boxes = merge_boxes([j for i in clef_boxes for j in i], 0.5)
+    #
+    #         if (len(clef_boxes) == 1):
+    #             print("[INFO] Clef Found")
+    #             staffs[i].setClef(clef)
+    #
+    #             print("[INFO] Displaying Matching Results on staff", i + 1)
+    #             clef_boxes_img = staffs[i].getImage()
+    #             clef_boxes_img = clef_boxes_img.copy()
+    #             clef_boxes_img = cv2.cvtColor(clef_boxes_img, cv2.COLOR_GRAY2RGB)
+    #             for boxes in clef_boxes:
+    #                 boxes.draw(clef_boxes_img, red, box_thickness)
+    #             cv2.imwrite("{}_clef_boxes_img_{}.png".format(clef,i + 1), clef_boxes_img)
+    #             open_file("{}_clef_boxes_img_{}.png".format(clef,i + 1))
+    #             break
+    #
+    #         print("[INFO] {} clef not found on staff".format(clef), i+1)
+    #
+    #     else:
+    #         # A clef should always be found
+    #         print("[INFO] No clef found on staff", i+1)
+    #
+    #     # # ------- Time -------
+    #     for time in time_imgs:
+    #         print("[INFO] Matching {} time signature template on staff".format(time), i + 1)
+    #         time_boxes = locate_templates(staffs[i].getImage(), time_imgs[time], time_lower, time_upper, time_thresh)
+    #
+    #         print("[INFO] Merging {} time signature template results...".format(time))
+    #
+    #         time_boxes = merge_boxes([j for i in time_boxes for j in i], 0.5)
+    #
+    #         if (len(time_boxes) == 1):
+    #             print("[INFO] Time Signature Found")
+    #             staffs[i].setTimeSignature(time)
+    #
+    #             print("[INFO] Displaying Matching Results on staff", i + 1)
+    #             time_boxes_img = staffs[i].getImage()
+    #             time_boxes_img = time_boxes_img.copy()
+    #             time_boxes_img = cv2.cvtColor(time_boxes_img, cv2.COLOR_GRAY2RGB)
+    #
+    #             for boxes in time_boxes:
+    #                 boxes.draw(time_boxes_img, red, box_thickness)
+    #             cv2.imwrite("{}_time_boxes_img_{}.png".format(time, i + 1), time_boxes_img)
+    #             open_file("{}_time_boxes_img_{}.png".format(time, i + 1))
+    #             break
+    #
+    #         elif (len(time_boxes) == 0 and i > 0):
+    #             # Take time signature of previous staff
+    #             previousTime = staffs[i-1].getTimeSignature()
+    #             staffs[i].setTimeSignature(previousTime)
+    #             print("[INFO] No time signature found on staff", i + 1, ". Using time signature from previous staff line.")
+    #             break
+    #     else:
+    #         print("[INFO] No time signature available for staff", i + 1)
 
-    print("Merging clef image results...")
-    clef_recs = merge_recs([j for i in clef_recs for j in i], 0.5)
-    clef_recs_img = isolated_staff_images[0].copy()
-    for r in clef_recs:
-        r.draw(clef_recs_img, (0, 0, 255), 2)
-    cv2.imwrite('clef_recs_img.png', clef_recs_img)
-    open_file('clef_recs_img.png')
-
-
-    # ============ Determine Time Signatures ============
-
-
-
-    # ============ Determine Key Signatures ============
-
-
-
-    # ============ Remove Staff Lines ============
-
-    # The most simple line removal algorithm removes the line piecewise — following it along
-    # and replacing the black line pixels with white pixels unless there is evidence of
-    # an object on either side of the line
-
-    # no_staff_img = remove_stafflines(img, all_staffline_vertical_indices)
-    # cv2.imshow("Input", no_staff_img)
-    # cv2.waitKey(0)
-
-    # ============ Find Notes ============
+    # ============ Find Primitives ============
 
     # always assert that notes in a bar equal duration dictated by time signature
+    for i in range(len(staffs)):
+        print("[INFO] Finding Primitives on Staff ", i+1)
+        staff_primitives = []
+        staff_img = staffs[i].getImage()
+        red = (0, 0, 255)
+        box_thickness = 2
+
+        # print("[INFO] Matching sharp accidental template...")
+        # sharp_boxes = locate_templates(staff_img, sharp_imgs, sharp_lower, sharp_upper, sharp_thresh)
+        #
+        # print("[INFO] Merging sharp accidental template results...")
+        # sharp_boxes = merge_boxes([j for i in sharp_boxes for j in i], 0.5)
+        # sharp_boxes_img = staffs[i].getImage()
+        # sharp_boxes_img = sharp_boxes_img.copy()
+        # sharp_boxes_img = cv2.cvtColor(sharp_boxes_img, cv2.COLOR_GRAY2RGB)
+        # for box in sharp_boxes:
+        #     box.draw(sharp_boxes_img, red, box_thickness)
+        #     sharp = Primitive("sharp", 0, box)
+        #     staff_primitives.append(sharp)
+        # cv2.imwrite('sharp_boxes_img.png', sharp_boxes_img)
+        # open_file('sharp_boxes_img.png')
+        #
+        # print("[INFO] Matching flat accidental template...")
+        # flat_boxes = locate_templates(staff_img, flat_imgs, flat_lower, flat_upper, flat_thresh)
+        #
+        # print("[INFO] Merging flat accidental template results...")
+        # flat_boxes = merge_boxes([j for i in flat_boxes for j in i], 0.5)
+        # flat_boxes_img = staffs[i].getImage()
+        # flat_boxes_img = flat_boxes_img.copy()
+        # flat_boxes_img = cv2.cvtColor(flat_boxes_img, cv2.COLOR_GRAY2RGB)
+        # for box in flat_boxes:
+        #     box.draw(flat_boxes_img, red, box_thickness)
+        #     flat = Primitive("flat", 0, box)
+        #     staff_primitives.append(flat)
+        # cv2.imwrite('flat_boxes_img.png', flat_boxes_img)
+        # open_file('flat_boxes_img.png')
+        #
+        # print("[INFO] Matching quarter note template...")
+        # quarter_boxes = locate_templates(staff_img, quarter_note_imgs, quarter_note_lower, quarter_note_upper, quarter_note_thresh)
+        #
+        # print("[INFO] Merging quarter note template results...")
+        # quarter_boxes = merge_boxes([j for i in quarter_boxes for j in i], 0.5)
+        # quarter_boxes_img = staffs[i].getImage()
+        # quarter_boxes_img = quarter_boxes_img.copy()
+        # quarter_boxes_img = cv2.cvtColor(quarter_boxes_img, cv2.COLOR_GRAY2RGB)
+        # for box in quarter_boxes:
+        #     # Determine Pitch
+        #     # Map Pitch to MIDI Note
+        #     box.draw(quarter_boxes_img, red, box_thickness)
+        #     quarter = Primitive("note", 1, box)     # Add pitch
+        #     staff_primitives.append(quarter)
+        # cv2.imwrite('quarter_boxes_img.png', quarter_boxes_img)
+        # open_file('quarter_boxes_img.png')
+        #
+        # print("[INFO] Matching half note template...")
+        # half_boxes = locate_templates(staff_img, half_note_imgs, half_note_lower, half_note_upper, half_note_thresh)
+        #
+        # print("[INFO] Merging half note template results...")
+        # half_boxes = merge_boxes([j for i in half_boxes for j in i], 0.5)
+        # half_boxes_img = staffs[i].getImage()
+        # half_boxes_img = half_boxes_img.copy()
+        # half_boxes_img = cv2.cvtColor(half_boxes_img, cv2.COLOR_GRAY2RGB)
+        # for box in half_boxes:
+        #     # Determine Pitch
+        #     # Map Pitch to MIDI Note
+        #     box.draw(half_boxes_img, red, box_thickness)
+        #     half = Primitive("note", 2, box)  # Add pitch
+        #     staff_primitives.append(half)
+        # cv2.imwrite('half_boxes_img.png', half_boxes_img)
+        # open_file('half_boxes_img.png')
+        #
+        # print("[INFO] Matching whole note template...")
+        # whole_boxes = locate_templates(staff_img, whole_note_imgs, whole_note_lower, whole_note_upper, whole_note_thresh)
+        #
+        # print("[INFO] Merging whole note template results...")
+        # whole_boxes = merge_boxes([j for i in whole_boxes for j in i], 0.5)
+        # whole_boxes_img = staffs[i].getImage()
+        # whole_boxes_img = whole_boxes_img.copy()
+        # whole_boxes_img = cv2.cvtColor(whole_boxes_img, cv2.COLOR_GRAY2RGB)
+        # for box in whole_boxes:
+        #     # Determine Pitch
+        #     # Map Pitch to MIDI Note
+        #     box.draw(whole_boxes_img, red, box_thickness)
+        #     whole = Primitive("note", 4, box)  # Add pitch
+        #     staff_primitives.append(whole)
+        # cv2.imwrite('whole_boxes_img.png', whole_boxes_img)
+        # open_file('whole_boxes_img.png')
+
+        # print("[INFO] Matching eighth rest template...")
+        # eighth_boxes = locate_templates(staff_img, eighth_rest_imgs, eighth_rest_lower, eighth_rest_upper, eighth_rest_thresh)
+        #
+        # print("[INFO] Merging eighth rest template results...")
+        # eighth_boxes = merge_boxes([j for i in eighth_boxes for j in i], 0.5)
+        # eighth_boxes_img = staffs[i].getImage()
+        # eighth_boxes_img = eighth_boxes_img.copy()
+        # eighth_boxes_img = cv2.cvtColor(eighth_boxes_img, cv2.COLOR_GRAY2RGB)
+        # for box in eighth_boxes:
+        #     # Determine Pitch
+        #     # Map Pitch to MIDI Note
+        #     box.draw(eighth_boxes_img, red, box_thickness)
+        #     eighth = Primitive("rest", 0.5, box)  # Add pitch
+        #     staff_primitives.append(eighth)
+        # cv2.imwrite('eighth_boxes_img.png', eighth_boxes_img)
+        # open_file('eighth_boxes_img.png')
+        #
+        # print("[INFO] Matching quarter rest template...")
+        # quarter_boxes = locate_templates(staff_img, quarter_rest_imgs, quarter_rest_lower, quarter_rest_upper, quarter_rest_thresh)
+        #
+        # print("[INFO] Merging quarter rest template results...")
+        # quarter_boxes = merge_boxes([j for i in quarter_boxes for j in i], 0.5)
+        # quarter_boxes_img = staffs[i].getImage()
+        # quarter_boxes_img = quarter_boxes_img.copy()
+        # quarter_boxes_img = cv2.cvtColor(quarter_boxes_img, cv2.COLOR_GRAY2RGB)
+        # for box in quarter_boxes:
+        #     # Determine Pitch
+        #     # Map Pitch to MIDI Note
+        #     box.draw(quarter_boxes_img, red, box_thickness)
+        #     quarter = Primitive("rest", 1, box)  # Add pitch
+        #     staff_primitives.append(quarter)
+        # cv2.imwrite('quarter_boxes_img.png', quarter_boxes_img)
+        # open_file('quarter_boxes_img.png')
+        #
+        # print("[INFO] Matching half rest template...")
+        # half_boxes = locate_templates(staff_img, half_rest_imgs, half_rest_lower, half_rest_upper, half_rest_thresh)
+        #
+        # print("[INFO] Merging half rest template results...")
+        # half_boxes = merge_boxes([j for i in half_boxes for j in i], 0.5)
+        # half_boxes_img = staffs[i].getImage()
+        # half_boxes_img = half_boxes_img.copy()
+        # half_boxes_img = cv2.cvtColor(half_boxes_img, cv2.COLOR_GRAY2RGB)
+        # for box in half_boxes:
+        #     # Determine Pitch
+        #     # Map Pitch to MIDI Note
+        #     box.draw(half_boxes_img, red, box_thickness)
+        #     half = Primitive("rest", 2, box)  # Add pitch
+        #     staff_primitives.append(half)
+        # cv2.imwrite('half_boxes_img.jpg', half_boxes_img)
+        # open_file('half_boxes_img.jpg')
+
+        # print("[INFO] Matching whole rest template...")
+        # whole_boxes = locate_templates(staff_img, whole_rest_imgs, whole_rest_lower, whole_rest_upper, whole_rest_thresh)
+        #
+        # print("[INFO] Merging whole rest template results...")
+        # whole_boxes = merge_boxes([j for i in whole_boxes for j in i], 0.5)
+        # whole_boxes_img = staffs[i].getImage()
+        # whole_boxes_img = whole_boxes_img.copy()
+        # whole_boxes_img = cv2.cvtColor(whole_boxes_img, cv2.COLOR_GRAY2RGB)
+        # for box in whole_boxes:
+        #     # Determine Pitch
+        #     # Map Pitch to MIDI Note
+        #     box.draw(whole_boxes_img, red, box_thickness)
+        #     whole = Primitive("rest", 4, box)  # Add pitch
+        #     staff_primitives.append(whole)
+        # cv2.imwrite('whole_boxes_img.jpg', whole_boxes_img)
+        # open_file('whole_boxes_img.jpg')
+
+        print("[INFO] Matching bar line template...")
+        bar_boxes = locate_templates(staff_img, bar_imgs, bar_lower, bar_upper,
+                                       bar_thresh)
+
+        print("[INFO] Merging bar line template results...")
+        bar_boxes = merge_boxes([j for i in bar_boxes for j in i], 0.5)
+        bar_boxes_img = staffs[i].getImage()
+        bar_boxes_img = bar_boxes_img.copy()
+        bar_boxes_img = cv2.cvtColor(bar_boxes_img, cv2.COLOR_GRAY2RGB)
+        for box in bar_boxes:
+            # Determine Pitch
+            # Map Pitch to MIDI Note
+            box.draw(bar_boxes_img, red, box_thickness)
+            line = Primitive("line", 0, box)
+            staff_primitives.append(line)
+        cv2.imwrite('bar_boxes_img.jpg', bar_boxes_img)
+        open_file('bar_boxes_img.jpg')
 
 
-
-    #-------------------------------------------------------------------------------
-    # Object Recognition
-    #-------------------------------------------------------------------------------
-
-    # Use one of the following:
-    # projection profiles
-    # template matching: https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_imgproc/py_template_matching/py_template_matching.html#py-template-matching
-    # Perceptron
-
-
-    # Classifiers are built by taking a set of labeled examples of
-    # music symbols and randomly split them into training and test
-    # sets. The best parameterization for each model is normally
-    # found based on a cross validation scheme conducted on the
-    # training set.
-
-    #-------------------------------------------------------------------------------
-    # Semantic Reconstruction
-    #-------------------------------------------------------------------------------
-
-    # reconstruct the musical semantics from previously recognized graphical
-    # primitives and store the information in a suitable data structure.
-
-    # Grammar?
-    # build the semantic reconstruction on a set of rules and heuristics
-
-    # transformation of semantically recognized scores in a coding format that is able to model and
-    # store music information
-
-    # correct for key signature
 
 
 

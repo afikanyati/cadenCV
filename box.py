@@ -1,7 +1,7 @@
 import cv2
 import math
 
-class Rectangle(object):
+class BoundingBox(object):
     def __init__(self, x, y, w, h):
         self.x = x;
         self.y = y;
@@ -26,7 +26,7 @@ class Rectangle(object):
         y = min(self.y, other.y)
         w = max(self.x + self.w, other.x + other.w) - x
         h = max(self.y + self.h, other.y + other.h) - y
-        return Rectangle(x, y, w, h)
+        return BoundingBox(x, y, w, h)
 
     def draw(self, img, color, thickness):
         pos = ((int)(self.x), (int)(self.y))
@@ -41,3 +41,6 @@ class Rectangle(object):
 
     def get_height(self):
         return self.h
+
+    def get_center(self):
+        return self.middle
