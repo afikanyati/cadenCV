@@ -86,9 +86,9 @@ rest_paths = {
     "whole": ["resources/template/rest/whole_rest.jpg"]
 }
 
-barline_paths = ["resources/template/barline_1.jpg",
-                 "resources/template/barline_2.jpg",
-                 "resources/template/barline_3.jpg"]
+barline_paths = ["resources/template/barline/barline_1.jpg",
+                 "resources/template/barline/barline_2.jpg",
+                 "resources/template/barline/barline_3.jpg"]
 
 #-------------------------------------------------------------------------------
 # Template Images
