@@ -82,12 +82,13 @@ rest_paths = {
     "eighth": ["resources/template/rest/eighth_rest.jpg"],
     "quarter": ["resources/template/rest/quarter_rest.jpg"],
     "half": ["resources/template/rest/half_rest_1.jpg",
-            "resources/template/rest/half_rest_2.jpg"
-    ],
+            "resources/template/rest/half_rest_2.jpg"],
     "whole": ["resources/template/rest/whole_rest.jpg"]
 }
 
-barline_paths = ["resources/template/barline.jpg"]
+barline_paths = ["resources/template/barline_1.jpg",
+                 "resources/template/barline_2.jpg",
+                 "resources/template/barline_3.jpg"]
 
 #-------------------------------------------------------------------------------
 # Template Images
@@ -504,7 +505,7 @@ if __name__ == "__main__":
 
     # ============ Read Image ============
     # img_file = sys.argv[1:][0]
-    img_file ='resources/samples/fire.jpg'
+    img_file ='resources/samples/dream.png'
     img = cv2.imread(img_file, 0)
 
     # ============ Noise Removal ============
