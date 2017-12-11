@@ -5,13 +5,11 @@ class Primitive(object):
         self.primitive = primitive
         self.box = box
 
-    def addFlat(self):
-        if (self.primitive == "note"):
-            self.pitch -= 1
+    def setPitch(self, pitch):
+        self.pitch = pitch
 
-    def addSharp(self):
-        if (self.primitive == "note"):
-            self.pitch += 1
+    def setDuration(self, duration):
+        self.duration = duration
     
     def getPrimitive(self):
         return self.primitive

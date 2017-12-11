@@ -9,8 +9,8 @@ def match(img, templates, start_percent, stop_percent, threshold):
     best_locations = []
     best_scale = 1
 
-    #plt.axis([0, 2, 0, 1])
-    #plt.show(block=False)
+    # plt.axis([0, 2, 0, 1])
+    # plt.show(block=False)
 
     x = []
     y = []
@@ -38,9 +38,9 @@ def match(img, templates, start_percent, stop_percent, threshold):
             best_location_count = location_count
             best_locations = locations
             best_scale = scale
-            #plt.axis([0, 2, 0, best_location_count])
+            # plt.axis([0, 2, 0, best_location_count])
         elif (location_count < best_location_count):
             pass
-    #plt.close()
+    # plt.close()
 
     return best_locations, best_scale

@@ -33,14 +33,14 @@ class BoundingBox(object):
         size = ((int)(self.x + self.w), (int)(self.y + self.h))
         cv2.rectangle(img, pos, size, color, thickness)
 
-    def get_corner(self):
+    def getCorner(self):
         return self.x, self.y
 
-    def get_width(self):
+    def getWidth(self):
         return self.w
 
-    def get_height(self):
+    def getHeight(self):
         return self.h
 
-    def get_center(self):
+    def getCenter(self):
         return self.middle
