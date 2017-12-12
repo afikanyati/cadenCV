@@ -78,7 +78,6 @@ note_paths = {
         "resources/template/note/whole-note-space.png"
     ]
 }
-
 rest_paths = {
     "eighth": ["resources/template/rest/eighth_rest.jpg"],
     "quarter": ["resources/template/rest/quarter_rest.jpg"],
@@ -96,7 +95,8 @@ flag_paths = ["resources/template/flag/eighth_flag_1.jpg",
 
 barline_paths = ["resources/template/barline/barline_1.jpg",
                  "resources/template/barline/barline_2.jpg",
-                 "resources/template/barline/barline_3.jpg"]
+                 "resources/template/barline/barline_3.jpg",
+                 "resources/template/barline/barline_4.jpg"]
 
 #-------------------------------------------------------------------------------
 # Template Images
@@ -147,7 +147,7 @@ bar_imgs = [cv2.imread(barline, 0) for barline in barline_paths]
 clef_lower, clef_upper, clef_thresh = 50, 150, 0.88
 
 # Time
-time_lower, time_upper, time_thresh = 50, 150, 0.88
+time_lower, time_upper, time_thresh = 50, 150, 0.85
 
 # Accidentals
 sharp_lower, sharp_upper, sharp_thresh = 50, 150, 0.70
@@ -156,7 +156,7 @@ flat_lower, flat_upper, flat_thresh = 50, 150, 0.77
 # Notes
 quarter_note_lower, quarter_note_upper, quarter_note_thresh = 50, 150, 0.70
 half_note_lower, half_note_upper, half_note_thresh = 50, 150, 0.70
-whole_note_lower, whole_note_upper, whole_note_thresh = 50, 150, 0.70
+whole_note_lower, whole_note_upper, whole_note_thresh = 50, 150, 0.7011
 
 # Rests
 eighth_rest_lower, eighth_rest_upper, eighth_rest_thresh = 50, 150, 0.75 # Before was 0.7
@@ -168,7 +168,7 @@ whole_rest_lower, whole_rest_upper, whole_rest_thresh = 50, 150, 0.80
 eighth_flag_lower, eighth_flag_upper, eighth_flag_thresh = 50, 150, 0.8
 
 # Bar line
-bar_lower, bar_upper, bar_thresh = 50, 150, 0.9
+bar_lower, bar_upper, bar_thresh = 50, 150, 0.85
 
 #-------------------------------------------------------------------------------
 # Mapping Functions
@@ -650,8 +650,7 @@ if __name__ == "__main__":
     # Binarization + Blurring (Otsu): https://docs.opencv.org/3.3.1/d7/d4d/tutorial_py_thresholding.html
 
     # ============ Read Image ============
-    # img_file = sys.argv[1:][0]
-    img_file ='resources/samples/dream.png'
+    img_file = sys.argv[1:][0]
     img = cv2.imread(img_file, 0)
 
     # ============ Noise Removal ============
@@ -742,10 +741,13 @@ if __name__ == "__main__":
     for staff in staffs:
         box = staff.getBox()
         box.draw(staff_boxes_img, red, box_thickness)
+        x = int(box.getCorner()[0] + (box.getWidth() // 2))
+        y = int(box.getCorner()[1] + box.getHeight() + 35)
+        cv2.putText(staff_boxes_img, "Staff", (x, y), cv2.FONT_HERSHEY_DUPLEX, 0.9 , red)
 
-    cv2.imwrite('staff_boxes_img.png', staff_boxes_img)
-    open_file('staff_boxes_img.png')
-    print("[INFO] Outputting image showing detected staffs")
+    cv2.imwrite('output/detected_staffs.jpg', staff_boxes_img)
+    # open_file('output/detected_staffs.jpg')
+    print("[INFO] Saving detected staffs onto disk")
 
     #-------------------------------------------------------------------------------
     # Symbol Segmentation, Object Recognition, and Semantic Reconstruction
@@ -760,14 +762,19 @@ if __name__ == "__main__":
 
     # ============ Determine Clef, Time Signature ============
 
+    staff_imgs_color = []
+
     for i in range(len(staffs)):
         red = (0, 0, 255)
         box_thickness = 2
+        staff_img = staffs[i].getImage()
+        staff_img_color = staff_img.copy()
+        staff_img_color = cv2.cvtColor(staff_img_color, cv2.COLOR_GRAY2RGB)
 
         # ------- Clef -------
         for clef in clef_imgs:
             print("[INFO] Matching {} clef template on staff".format(clef), i + 1)
-            clef_boxes = locate_templates(staffs[i].getImage(), clef_imgs[clef], clef_lower, clef_upper, clef_thresh)
+            clef_boxes = locate_templates(staff_img, clef_imgs[clef], clef_lower, clef_upper, clef_thresh)
             clef_boxes = merge_boxes([j for i in clef_boxes for j in i], 0.5)
 
             if (len(clef_boxes) == 1):
@@ -775,13 +782,14 @@ if __name__ == "__main__":
                 staffs[i].setClef(clef)
 
                 # print("[INFO] Displaying Matching Results on staff", i + 1)
-                # clef_boxes_img = staffs[i].getImage()
-                # clef_boxes_img = clef_boxes_img.copy()
-                # clef_boxes_img = cv2.cvtColor(clef_boxes_img, cv2.COLOR_GRAY2RGB)
-                # for boxes in clef_boxes:
-                #     boxes.draw(clef_boxes_img, red, box_thickness)
-                # cv2.imwrite("{}_clef_boxes_img_{}.png".format(clef,i + 1), clef_boxes_img)
-                # open_file("{}_clef_boxes_img_{}.png".format(clef,i + 1))
+                clef_boxes_img = staffs[i].getImage()
+                clef_boxes_img = clef_boxes_img.copy()
+
+                for boxes in clef_boxes:
+                    boxes.draw(staff_img_color, red, box_thickness)
+                    x = int(boxes.getCorner()[0] + (boxes.getWidth() // 2))
+                    y = int(boxes.getCorner()[1] + boxes.getHeight() + 10)
+                    cv2.putText(staff_img_color, "{} clef".format(clef), (x, y), cv2.FONT_HERSHEY_DUPLEX, 0.9, red)
                 break
 
         else:
@@ -791,7 +799,7 @@ if __name__ == "__main__":
         # # ------- Time -------
         for time in time_imgs:
             print("[INFO] Matching {} time signature template on staff".format(time), i + 1)
-            time_boxes = locate_templates(staffs[i].getImage(), time_imgs[time], time_lower, time_upper, time_thresh)
+            time_boxes = locate_templates(staff_img, time_imgs[time], time_lower, time_upper, time_thresh)
             time_boxes = merge_boxes([j for i in time_boxes for j in i], 0.5)
 
             if (len(time_boxes) == 1):
@@ -799,14 +807,12 @@ if __name__ == "__main__":
                 staffs[i].setTimeSignature(time)
 
                 # print("[INFO] Displaying Matching Results on staff", i + 1)
-                # time_boxes_img = staffs[i].getImage()
-                # time_boxes_img = time_boxes_img.copy()
-                # time_boxes_img = cv2.cvtColor(time_boxes_img, cv2.COLOR_GRAY2RGB)
-                #
-                # for boxes in time_boxes:
-                #     boxes.draw(time_boxes_img, red, box_thickness)
-                # cv2.imwrite("{}_time_boxes_img_{}.png".format(time, i + 1), time_boxes_img)
-                # open_file("{}_time_boxes_img_{}.png".format(time, i + 1))
+
+                for boxes in time_boxes:
+                    boxes.draw(staff_img_color, red, box_thickness)
+                    x = int(boxes.getCorner()[0] - (boxes.getWidth() // 2))
+                    y = int(boxes.getCorner()[1] + boxes.getHeight() + 20)
+                    cv2.putText(staff_img_color, "{} time".format(time), (x, y), cv2.FONT_HERSHEY_DUPLEX, 0.9, red)
                 break
 
             elif (len(time_boxes) == 0 and i > 0):
@@ -818,6 +824,8 @@ if __name__ == "__main__":
         else:
             print("[INFO] No time signature available for staff", i + 1)
 
+        staff_imgs_color.append(staff_img_color)
+
     # ============ Find Primitives ============
 
     # always assert that notes in a bar equal duration dictated by time signature
@@ -825,6 +833,7 @@ if __name__ == "__main__":
         print("[INFO] Finding Primitives on Staff ", i+1)
         staff_primitives = []
         staff_img = staffs[i].getImage()
+        staff_img_color = staff_imgs_color[i]
         red = (0, 0, 255)
         box_thickness = 2
 
@@ -834,168 +843,184 @@ if __name__ == "__main__":
         sharp_boxes = merge_boxes([j for i in sharp_boxes for j in i], 0.5)
 
         print("[INFO] Displaying Matching Results on staff", i + 1)
-        sharp_boxes_img = staffs[i].getImage()
-        sharp_boxes_img = sharp_boxes_img.copy()
-        sharp_boxes_img = cv2.cvtColor(sharp_boxes_img, cv2.COLOR_GRAY2RGB)
         for box in sharp_boxes:
-            box.draw(sharp_boxes_img, red, box_thickness)
+            box.draw(staff_img_color, red, box_thickness)
+            text = "sharp"
+            font = cv2.FONT_HERSHEY_DUPLEX
+            textsize = cv2.getTextSize(text, font, fontScale=0.7, thickness=1)[0]
+            x = int(box.getCorner()[0] - (textsize[0] // 2))
+            y = int(box.getCorner()[1] + box.getHeight() + 20)
+            cv2.putText(staff_img_color, text, (x, y), font, fontScale=0.7, color=red, thickness=1)
             sharp = Primitive("sharp", 0, box)
             staff_primitives.append(sharp)
-        cv2.imwrite('sharp_boxes_img.png', sharp_boxes_img)
-        open_file('sharp_boxes_img.png')
 
         print("[INFO] Matching flat accidental template...")
         flat_boxes = locate_templates(staff_img, flat_imgs, flat_lower, flat_upper, flat_thresh)
         flat_boxes = merge_boxes([j for i in flat_boxes for j in i], 0.5)
 
         print("[INFO] Displaying Matching Results on staff", i + 1)
-        flat_boxes_img = staffs[i].getImage()
-        flat_boxes_img = flat_boxes_img.copy()
-        flat_boxes_img = cv2.cvtColor(flat_boxes_img, cv2.COLOR_GRAY2RGB)
         for box in flat_boxes:
-            box.draw(flat_boxes_img, red, box_thickness)
+            box.draw(staff_img_color, red, box_thickness)
+            text = "flat"
+            font = cv2.FONT_HERSHEY_DUPLEX
+            textsize = cv2.getTextSize(text, font, fontScale=0.7, thickness=1)[0]
+            x = int(box.getCorner()[0] - (textsize[0] // 2))
+            y = int(box.getCorner()[1] + box.getHeight() + 20)
+            cv2.putText(staff_img_color, text, (x, y), font, fontScale=0.7, color=red, thickness=1)
             flat = Primitive("flat", 0, box)
             staff_primitives.append(flat)
-        cv2.imwrite('flat_boxes_img.png', flat_boxes_img)
-        open_file('flat_boxes_img.png')
 
         print("[INFO] Matching quarter note template...")
         quarter_boxes = locate_templates(staff_img, quarter_note_imgs, quarter_note_lower, quarter_note_upper, quarter_note_thresh)
         quarter_boxes = merge_boxes([j for i in quarter_boxes for j in i], 0.5)
 
         print("[INFO] Displaying Matching Results on staff", i + 1)
-        quarter_boxes_img = staffs[i].getImage()
-        quarter_boxes_img = quarter_boxes_img.copy()
-        quarter_boxes_img = cv2.cvtColor(quarter_boxes_img, cv2.COLOR_GRAY2RGB)
         for box in quarter_boxes:
-            box.draw(quarter_boxes_img, red, box_thickness)
+            box.draw(staff_img_color, red, box_thickness)
+            text = "1/4 note"
+            font = cv2.FONT_HERSHEY_DUPLEX
+            textsize = cv2.getTextSize(text, font, fontScale=0.7, thickness=1)[0]
+            x = int(box.getCorner()[0] - (textsize[0] // 2))
+            y = int(box.getCorner()[1] + box.getHeight() + 20)
+            cv2.putText(staff_img_color, text, (x, y), font, fontScale=0.7, color=red, thickness=1)
             pitch = staffs[i].getPitch(round(box.getCenter()[1]))
             quarter = Primitive("note", 1, box, pitch)
             staff_primitives.append(quarter)
-        cv2.imwrite('quarter_note_boxes_img.png', quarter_boxes_img)
-        open_file('quarter_note_boxes_img.png')
 
         print("[INFO] Matching half note template...")
         half_boxes = locate_templates(staff_img, half_note_imgs, half_note_lower, half_note_upper, half_note_thresh)
         half_boxes = merge_boxes([j for i in half_boxes for j in i], 0.5)
 
         print("[INFO] Displaying Matching Results on staff", i + 1)
-        half_boxes_img = staffs[i].getImage()
-        half_boxes_img = half_boxes_img.copy()
-        half_boxes_img = cv2.cvtColor(half_boxes_img, cv2.COLOR_GRAY2RGB)
         for box in half_boxes:
-            box.draw(half_boxes_img, red, box_thickness)
+            box.draw(staff_img_color, red, box_thickness)
+            text = "1/2 note"
+            font = cv2.FONT_HERSHEY_DUPLEX
+            textsize = cv2.getTextSize(text, font, fontScale=0.7, thickness=1)[0]
+            x = int(box.getCorner()[0] - (textsize[0] // 2))
+            y = int(box.getCorner()[1] + box.getHeight() + 20)
+            cv2.putText(staff_img_color, text, (x, y), font, fontScale=0.7, color=red, thickness=1)
             pitch = staffs[i].getPitch(round(box.getCenter()[1]))
             half = Primitive("note", 2, box, pitch)
             staff_primitives.append(half)
-        cv2.imwrite('half_note_boxes_img.png', half_boxes_img)
-        open_file('half_note_boxes_img.png')
 
         print("[INFO] Matching whole note template...")
         whole_boxes = locate_templates(staff_img, whole_note_imgs, whole_note_lower, whole_note_upper, whole_note_thresh)
         whole_boxes = merge_boxes([j for i in whole_boxes for j in i], 0.5)
 
         print("[INFO] Displaying Matching Results on staff", i + 1)
-        whole_boxes_img = staffs[i].getImage()
-        whole_boxes_img = whole_boxes_img.copy()
-        whole_boxes_img = cv2.cvtColor(whole_boxes_img, cv2.COLOR_GRAY2RGB)
         for box in whole_boxes:
-            box.draw(whole_boxes_img, red, box_thickness)
+            box.draw(staff_img_color, red, box_thickness)
+            text = "1 note"
+            font = cv2.FONT_HERSHEY_DUPLEX
+            textsize = cv2.getTextSize(text, font, fontScale=0.7, thickness=1)[0]
+            x = int(box.getCorner()[0] - (textsize[0] // 2))
+            y = int(box.getCorner()[1] + box.getHeight() + 20)
+            cv2.putText(staff_img_color, text, (x, y), font, fontScale=0.7, color=red, thickness=1)
             pitch = staffs[i].getPitch(round(box.getCenter()[1]))
             whole = Primitive("note", 4, box, pitch)
             staff_primitives.append(whole)
-        cv2.imwrite('whole_note_boxes_img.png', whole_boxes_img)
-        open_file('whole_note_boxes_img.png')
 
         print("[INFO] Matching eighth rest template...")
         eighth_boxes = locate_templates(staff_img, eighth_rest_imgs, eighth_rest_lower, eighth_rest_upper, eighth_rest_thresh)
         eighth_boxes = merge_boxes([j for i in eighth_boxes for j in i], 0.5)
 
         print("[INFO] Displaying Matching Results on staff", i + 1)
-        eighth_boxes_img = staffs[i].getImage()
-        eighth_boxes_img = eighth_boxes_img.copy()
-        eighth_boxes_img = cv2.cvtColor(eighth_boxes_img, cv2.COLOR_GRAY2RGB)
         for box in eighth_boxes:
-            box.draw(eighth_boxes_img, red, box_thickness)
+            box.draw(staff_img_color, red, box_thickness)
+            text = "1/8 rest"
+            font = cv2.FONT_HERSHEY_DUPLEX
+            textsize = cv2.getTextSize(text, font, fontScale=0.7, thickness=1)[0]
+            x = int(box.getCorner()[0] - (textsize[0] // 2))
+            y = int(box.getCorner()[1] + box.getHeight() + 20)
+            cv2.putText(staff_img_color, text, (x, y), font, fontScale=0.7, color=red, thickness=1)
             eighth = Primitive("rest", 0.5, box)
             staff_primitives.append(eighth)
-        cv2.imwrite('eighth_rest_boxes_img.png', eighth_boxes_img)
-        open_file('eighth_rest_boxes_img.png')
 
         print("[INFO] Matching quarter rest template...")
         quarter_boxes = locate_templates(staff_img, quarter_rest_imgs, quarter_rest_lower, quarter_rest_upper, quarter_rest_thresh)
         quarter_boxes = merge_boxes([j for i in quarter_boxes for j in i], 0.5)
 
         print("[INFO] Displaying Matching Results on staff", i + 1)
-        quarter_boxes_img = staffs[i].getImage()
-        quarter_boxes_img = quarter_boxes_img.copy()
-        quarter_boxes_img = cv2.cvtColor(quarter_boxes_img, cv2.COLOR_GRAY2RGB)
         for box in quarter_boxes:
-            box.draw(quarter_boxes_img, red, box_thickness)
+            box.draw(staff_img_color, red, box_thickness)
+            text = "1/4 rest"
+            font = cv2.FONT_HERSHEY_DUPLEX
+            textsize = cv2.getTextSize(text, font, fontScale=0.7, thickness=1)[0]
+            x = int(box.getCorner()[0] - (textsize[0] // 2))
+            y = int(box.getCorner()[1] + box.getHeight() + 20)
+            cv2.putText(staff_img_color, text, (x, y), font, fontScale=0.7, color=red, thickness=1)
             quarter = Primitive("rest", 1, box)
             staff_primitives.append(quarter)
-        cv2.imwrite('quarter_rest_boxes_img.png', quarter_boxes_img)
-        open_file('quarter_rest_boxes_img.png')
 
         print("[INFO] Matching half rest template...")
         half_boxes = locate_templates(staff_img, half_rest_imgs, half_rest_lower, half_rest_upper, half_rest_thresh)
         half_boxes = merge_boxes([j for i in half_boxes for j in i], 0.5)
 
         print("[INFO] Displaying Matching Results on staff", i + 1)
-        half_boxes_img = staffs[i].getImage()
-        half_boxes_img = half_boxes_img.copy()
-        half_boxes_img = cv2.cvtColor(half_boxes_img, cv2.COLOR_GRAY2RGB)
         for box in half_boxes:
-            box.draw(half_boxes_img, red, box_thickness)
+            box.draw(staff_img_color, red, box_thickness)
+            text = "1/2 rest"
+            font = cv2.FONT_HERSHEY_DUPLEX
+            textsize = cv2.getTextSize(text, font, fontScale=0.7, thickness=1)[0]
+            x = int(box.getCorner()[0] - (textsize[0] // 2))
+            y = int(box.getCorner()[1] + box.getHeight() + 20)
+            cv2.putText(staff_img_color, text, (x, y), font, fontScale=0.7, color=red, thickness=1)
             half = Primitive("rest", 2, box)
             staff_primitives.append(half)
-        cv2.imwrite('half_rest_boxes_img.jpg', half_boxes_img)
-        open_file('half_rest_boxes_img.jpg')
 
         print("[INFO] Matching whole rest template...")
         whole_boxes = locate_templates(staff_img, whole_rest_imgs, whole_rest_lower, whole_rest_upper, whole_rest_thresh)
         whole_boxes = merge_boxes([j for i in whole_boxes for j in i], 0.5)
 
         print("[INFO] Displaying Matching Results on staff", i + 1)
-        whole_boxes_img = staffs[i].getImage()
-        whole_boxes_img = whole_boxes_img.copy()
-        whole_boxes_img = cv2.cvtColor(whole_boxes_img, cv2.COLOR_GRAY2RGB)
         for box in whole_boxes:
-            box.draw(whole_boxes_img, red, box_thickness)
+            box.draw(staff_img_color, red, box_thickness)
+            text = "1 rest"
+            font = cv2.FONT_HERSHEY_DUPLEX
+            textsize = cv2.getTextSize(text, font, fontScale=0.7, thickness=1)[0]
+            x = int(box.getCorner()[0] - (textsize[0] // 2))
+            y = int(box.getCorner()[1] + box.getHeight() + 20)
+            cv2.putText(staff_img_color, text, (x, y), font, fontScale=0.7, color=red, thickness=1)
             whole = Primitive("rest", 4, box)
             staff_primitives.append(whole)
-        cv2.imwrite('whole_rest_boxes_img.jpg', whole_boxes_img)
-        open_file('whole_rest_boxes_img.jpg')
 
         print("[INFO] Matching eighth flag template...")
         flag_boxes = locate_templates(staff_img, eighth_flag_imgs, eighth_flag_lower, eighth_flag_upper, eighth_flag_thresh)
+        flag_boxes = merge_boxes([j for i in flag_boxes for j in i], 0.5)
 
         print("[INFO] Displaying Matching Results on staff", i + 1)
-        flag_boxes = merge_boxes([j for i in flag_boxes for j in i], 0.5)
-        flag_boxes_img = staffs[i].getImage()
-        flag_boxes_img = flag_boxes_img.copy()
-        flag_boxes_img = cv2.cvtColor(flag_boxes_img, cv2.COLOR_GRAY2RGB)
+
         for box in flag_boxes:
-            box.draw(flag_boxes_img, red, box_thickness)
+            box.draw(staff_img_color, red, box_thickness)
+            text = "1/8 flag"
+            font = cv2.FONT_HERSHEY_DUPLEX
+            textsize = cv2.getTextSize(text, font, fontScale=0.7, thickness=1)[0]
+            x = int(box.getCorner()[0] - (textsize[0] // 2))
+            y = int(box.getCorner()[1] + box.getHeight() + 20)
+            cv2.putText(staff_img_color, text, (x, y), font, fontScale=0.7, color=red, thickness=1)
             flag = Primitive("eighth_flag", 0, box)
             staff_primitives.append(flag)
-        cv2.imwrite('flag_boxes_img.jpg', flag_boxes_img)
-        open_file('flag_boxes_img.jpg')
 
         print("[INFO] Matching bar line template...")
         bar_boxes = locate_templates(staff_img, bar_imgs, bar_lower, bar_upper, bar_thresh)
+        bar_boxes = merge_boxes([j for i in bar_boxes for j in i], 0.5)
 
         print("[INFO] Displaying Matching Results on staff", i + 1)
-        bar_boxes = merge_boxes([j for i in bar_boxes for j in i], 0.5)
-        bar_boxes_img = staffs[i].getImage()
-        bar_boxes_img = bar_boxes_img.copy()
-        bar_boxes_img = cv2.cvtColor(bar_boxes_img, cv2.COLOR_GRAY2RGB)
         for box in bar_boxes:
-            box.draw(bar_boxes_img, red, box_thickness)
+            box.draw(staff_img_color, red, box_thickness)
+            text = "line"
+            font = cv2.FONT_HERSHEY_DUPLEX
+            textsize = cv2.getTextSize(text, font, fontScale=0.7, thickness=1)[0]
+            x = int(box.getCorner()[0] - (textsize[0] // 2))
+            y = int(box.getCorner()[1] + box.getHeight() + 20)
+            cv2.putText(staff_img_color, text, (x, y), font, fontScale=0.7, color=red, thickness=1)
             line = Primitive("line", 0, box)
             staff_primitives.append(line)
-        cv2.imwrite('bar_boxes_img.jpg', bar_boxes_img)
-        open_file('bar_boxes_img.jpg')
+
+        print("[INFO] Saving detected primitives in staff {} onto disk".format(i+1))
+        cv2.imwrite("output/staff_{}_primitives.jpg".format(i+1), staff_img_color)
+        # open_file("output/staff_{}_primitives.jpg".format(i+1))
 
         # ------- Sort primitives on staff from left to right -------
 
@@ -1072,7 +1097,7 @@ if __name__ == "__main__":
         num_sharps = 0
         num_flats = 0
         j = 0
-        while (staff_primitives[j].getPrimitive() != "note"):
+        while (staff_primitives[j].getDuration() == 0):
             accidental = staff_primitives[j].getPrimitive()
             if (accidental == "sharp"):
                 num_sharps += 1
@@ -1081,9 +1106,6 @@ if __name__ == "__main__":
             elif (accidental == "flat"):
                 num_flats += 1
                 j += 1
-
-            else:
-                assert False, "[ERROR] First primitive is not a note or accidental"
 
         # Check if last accidental belongs to note
 
@@ -1171,6 +1193,8 @@ if __name__ == "__main__":
             else:
                 staffs[i].addBar(bar)
                 bar = Bar()
+        # Add final bar in staff
+        staffs[i].addBar(bar)
 
     # -------------------------------------------------------------------------------
     # Sequence MIDI
@@ -1186,19 +1210,26 @@ if __name__ == "__main__":
     midi.addTrackName(track, time, "Track")
     midi.addTempo(track, time, 110)
 
-    for staff in staffs:
-        bars = staff.getBars()
-        for bar in bars:
-            primitives = bar.getPrimitives()
-            for primitive in primitives:
-                pitch = pitch_to_MIDI[primitive.getPitch()]
-                duration = primitive.getDuration()
-                midi.addNote(track, channel, pitch, time, duration, volume)
+    for i in range(len(staffs)):
+        print("==== Staff {} ====".format(i+1))
+        bars = staffs[i].getBars()
+        for j in range(len(bars)):
+            print("--- Bar {} ---".format(j + 1))
+            primitives = bars[j].getPrimitives()
+            for k in range(len(primitives)):
+                duration = primitives[k].getDuration()
+                if (primitives[k].getPrimitive() == "note"):
+                    pitch = pitch_to_MIDI[primitives[k].getPitch()]
+                    midi.addNote(track, channel, pitch, time, duration, volume)
+                print(primitives[k].getPrimitive())
+                print(primitives[k].getPitch())
+                print(primitives[k].getDuration())
+                print("-----")
                 time += duration
 
     # ------- Write to disk -------
     print("[INFO] Writing MIDI to disk")
-    binfile = open("output.mid", 'wb')
+    binfile = open("output/output.mid", 'wb')
     midi.writeFile(binfile)
     binfile.close()
 

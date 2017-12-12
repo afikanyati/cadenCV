@@ -1,7 +1,7 @@
 import numpy as np
 
 class Staff(object):
-    def __init__(self, staff_matrix, staff_box, line_width, line_spacing, staff_img, clef=-1, time_signature="44", instrument=-1):
+    def __init__(self, staff_matrix, staff_box, line_width, line_spacing, staff_img, clef="treble", time_signature="44", instrument=-1):
         self.clef = clef
         self.time_signature = time_signature
         self.instrument = instrument
@@ -61,19 +61,19 @@ class Staff(object):
         # Check within staff first
         if (note_center_y in self.line_one):
             return clef_info[self.clef][0][0]
-        elif (note_center_y in range(self.line_one[-1] + 1, self.line_two[0])):
+        elif (note_center_y in list(range(self.line_one[-1] + 1, self.line_two[0]))):
             return clef_info[self.clef][0][1]
         elif (note_center_y in self.line_two):
             return clef_info[self.clef][0][2]
-        elif (note_center_y in range(self.line_two[-1] + 1, self.line_three[0])):
+        elif (note_center_y in list(range(self.line_two[-1] + 1, self.line_three[0]))):
             return clef_info[self.clef][0][3]
         elif (note_center_y in self.line_three):
             return clef_info[self.clef][0][4]
-        elif (note_center_y in range(self.line_three[-1] + 1, self.line_four[0])):
+        elif (note_center_y in list(range(self.line_three[-1] + 1, self.line_four[0]))):
             return clef_info[self.clef][0][5]
         elif (note_center_y in self.line_four):
             return clef_info[self.clef][0][6]
-        elif (note_center_y in range(self.line_four[-1] + 1, self.line_five[0])):
+        elif (note_center_y in list(range(self.line_four[-1] + 1, self.line_five[0]))):
             return clef_info[self.clef][0][7]
         elif (note_center_y in self.line_five):
             return clef_info[self.clef][0][8]
@@ -83,7 +83,7 @@ class Staff(object):
                 # print("[getPitch] Note above staff ")
                 # Check above staff
                 line_below = self.line_one
-                current_line = range(self.line_one[0] - self.line_spacing, self.line_one[-1] - self.line_spacing)  # Go to next line above
+                current_line = [pixel - self.line_spacing for pixel in self.line_one] # Go to next line above
                 octave = clef_info[self.clef][1][0]  # The octave number at line one
                 note_index = clef_info[self.clef][1][1]  # Line one's pitch has this index in note_names
 
@@ -102,17 +102,18 @@ class Staff(object):
                         # Check next line above
                         octave = octave + 1 if (note_index + 2 >= 7) else octave
                         note_index = (note_index + 2) % 7
-                        line_below = list(current_line).copy()
-                        current_line = range(current_line[0] - self.line_spacing - self.line_width, current_line[-1] - self.line_spacing - self.line_width)
+                        line_below = current_line.copy()
+                        current_line = [pixel - self.line_spacing for pixel in current_line]
 
                 assert False, "[ERROR] Note was above staff, but not found"
             elif (note_center_y > self.line_five[-1]):
                 # print("[getPitch] Note below staff ")
                 # Check below staff
                 line_above = self.line_five
-                current_line = range(self.line_five[0] + self.line_spacing, self.line_five[-1] + self.line_spacing)  # Go to next line above
+                current_line = [pixel + self.line_spacing for pixel in self.line_five]  # Go to next line above
                 octave = clef_info[self.clef][2][0]  # The octave number at line five
                 note_index = clef_info[self.clef][2][1]  # Line five's pitch has this index in note_names
+
                 while (current_line[-1] < self.img.shape[0]):
                     if (note_center_y in current_line):
                         # Grab note two places above
@@ -128,8 +129,8 @@ class Staff(object):
                         # Check next line above
                         octave = octave - 1 if (note_index - 2 <= 7) else octave
                         note_index = (note_index - 2) % 7
-                        line_above = list(current_line).copy()
-                        current_line = range(current_line[0] + self.line_spacing + self.line_width, current_line[-1] + self.line_spacing + self.line_width)
+                        line_above = current_line.copy()
+                        current_line = [pixel + self.line_spacing for pixel in current_line]
                 assert False, "[ERROR] Note was below staff, but not found"
             else:
                 # Should not get here
