@@ -664,6 +664,7 @@ if __name__ == "__main__":
 
     # Otsu's Thresholding
     retval, img = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+    cv2.imwrite('binarized.jpg', img)
 
     # ============ Deskewing ============
 

@@ -2,32 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="508a06d0-1d37-45b9-ab80-ca7b32d4f8de" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bar_boxes_img.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/eighth_rest_boxes_img.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/flag_boxes_img.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/flat_boxes_img.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/half_note_boxes_img.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/half_rest_boxes_img.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/quarter_note_boxes_img.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/quarter_rest_boxes_img.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/samples/703.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/samples/Moonlight Shadow Flauta-1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/samples/VarnattstankarvidFridasruta.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/samples/dream.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/samples/dream_1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/samples/drum.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/samples/greenslaves.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/samples/loki.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/samples/lost.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/samples/races.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/samples/sheet.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sharp_boxes_img.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/staff_boxes_img.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/whole_note_boxes_img.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/whole_rest_boxes_img.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/output/staff_4_primitives.jpg" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/staff.py" afterPath="$PROJECT_DIR$/staff.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="652" column="30" lean-forward="false" selection-start-line="652" selection-start-column="30" selection-end-line="652" selection-end-column="30" />
+            <state relative-caret-position="12438">
+              <caret line="1057" column="31" lean-forward="true" selection-start-line="1057" selection-start-column="31" selection-end-line="1057" selection-end-column="31" />
               <folding>
                 <element signature="e#499#509#0" expanded="true" />
               </folding>
@@ -72,10 +49,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="staff.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="staff.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/staff.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
+            <state relative-caret-position="885">
               <caret line="121" column="49" lean-forward="false" selection-start-line="121" selection-start-column="49" selection-end-line="121" selection-end-column="49" />
               <folding />
             </state>
@@ -108,7 +85,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>//</find>
       <find>zip</find>
       <find>hello</find>
       <find>np.</find>
@@ -138,6 +114,7 @@
       <find>range</find>
       <find>staff_img</find>
       <find>dotted</find>
+      <find>clef_info</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -158,13 +135,13 @@
         <option value="$PROJECT_DIR$/primitive.py" />
         <option value="$PROJECT_DIR$/bar.py" />
         <option value="$USER_HOME$/Downloads/SheetVision-master/main.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/staff.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="266" />
+    <option name="x" value="104" />
     <option name="y" value="22" />
     <option name="width" value="1301" />
     <option name="height" value="878" />
@@ -290,7 +267,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="266" y="22" width="1301" height="878" extended-state="0" />
+    <frame x="104" y="22" width="1301" height="878" extended-state="0" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.098490864" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298292" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -530,21 +507,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/staff.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="652" column="30" lean-forward="false" selection-start-line="652" selection-start-column="30" selection-end-line="652" selection-end-column="30" />
-          <folding>
-            <element signature="e#499#509#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="885">
+          <caret line="121" column="49" lean-forward="false" selection-start-line="121" selection-start-column="49" selection-end-line="121" selection-end-column="49" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/staff.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="121" column="49" lean-forward="false" selection-start-line="121" selection-start-column="49" selection-end-line="121" selection-end-column="49" />
-          <folding />
+        <state relative-caret-position="12438">
+          <caret line="1057" column="31" lean-forward="true" selection-start-line="1057" selection-start-column="31" selection-end-line="1057" selection-end-column="31" />
+          <folding>
+            <element signature="e#499#509#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
