@@ -10,7 +10,7 @@ For OMR:
 - *Python 3.6*
 - *python-numpy*
 - *Python matplotlib*
-- *python-open-cv*
+- *python-opencv*
 - *Python MIDIUtil*
 
 ## II. Usage
