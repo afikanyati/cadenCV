@@ -17,7 +17,7 @@ While much has been explored in context of music production, and listener consum
 Music notation comprises a large finite alphabet used to express ways of interpreting and communicating musical ideas. Each character serves to create a visual manifestation of the interrelated properties of musical sound such as pitch, dynamics, time, and timbre. For background, music notes are presented on a staff, a set of five lines each possessing its own pitch. A clef serves to communicate the pitch associated with each of these five lines. In this way, the pitch of a given note is determined by its vertical placement on the staff i.e. it's pitch is consistent with the pitch of the staff line or space on which it rests. The temporal nature of music is represented by the horizontal traversal of the staff. Thus music notation presents information in two dimensions. Certain subsets of the alphabet serve to communicate note duration, relative durations of silence, temporary changes in pitch, dynamics (loudness), and note articulations (changes in musical sound). In practice, certain symbols have almost unlimited variations in representation. As a result, building a computer vision system that understands musical notation is a difficult, but achievable goal.
 
 ![alt text](https://github.com/anyati/cadenCV/blob/master/resources/README/image2.jpg)
--> Typical music primitives used in sheet music. <-
+Typical music primitives used in sheet music.
 
 ![alt text](https://github.com/anyati/cadenCV/blob/master/resources/README/image3.jpg)
 Bi-dimensional structure of the music staff.
