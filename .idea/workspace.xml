@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="508a06d0-1d37-45b9-ab80-ca7b32d4f8de" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output/detected_staffs.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output/output.mid" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output/staff_1_primitives.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output/staff_2_primitives.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output/staff_3_primitives.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-    </list>
+    <list default="true" id="508a06d0-1d37-45b9-ab80-ca7b32d4f8de" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,7 +15,7 @@
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="243">
-              <caret line="244" column="14" lean-forward="true" selection-start-line="244" selection-start-column="14" selection-end-line="244" selection-end-column="14" />
+              <caret line="244" column="14" lean-forward="false" selection-start-line="244" selection-start-column="14" selection-end-line="244" selection-end-column="14" />
               <folding>
                 <element signature="e#499#509#0" expanded="true" />
               </folding>
@@ -523,7 +515,7 @@
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
-          <caret line="244" column="14" lean-forward="true" selection-start-line="244" selection-start-column="14" selection-end-line="244" selection-end-column="14" />
+          <caret line="244" column="14" lean-forward="false" selection-start-line="244" selection-start-column="14" selection-end-line="244" selection-end-column="14" />
           <folding>
             <element signature="e#499#509#0" expanded="true" />
           </folding>

@@ -4,7 +4,24 @@ cadenCV is an optical music recognition system written in the Python programming
 
 ![alt text](https://github.com/anyati/cadenCV/blob/master/resources/README/image1.jpg)
 
-## I. Introduction 
+## I. Dependencies
+
+For OMR:
+- *Python 3.6*
+- *python-numpy*
+- *Python matplotlib*
+- *python-open-cv*
+- *Python MIDIUtil*
+
+## II. Usage
+
+To run the OMR system, run the following command in the terminal:
+
+$ python main.py "image"
+
+where *image* is a placeholder for the sheet music bitmap file. (Accepts *.jpg* and *.png*)
+
+## III. Introduction
 
 Music has long been an integral part of human culture, and today this still remains true. As a form of artistic ex- pression and emotional communication in contemporary society, it’s almost impossible to go a day without hearing a song played or a tune being whistled in your vicinity.
 
@@ -12,7 +29,7 @@ Over the last century, we’ve seen a significant global increase in the use of 
 
 While much has been explored in context of music production, and listener consumption, limited development has been made towards the digitization of pre-information age and printed music documents. To be more specific, today there exists no robust tools for computer perception of music notation, inhibiting the improvement of music storage, playback and manipulation in a digital form. For example, a musician learning a new song would greatly benefit from hearing its auditory representation prior to parsing its notated sheet music. This is the focus of Optical Music Recognition.
 
-## II. Approach
+## IV. Approach
 
 Music notation comprises a large finite alphabet used to express ways of interpreting and communicating musical ideas. Each character serves to create a visual manifestation of the interrelated properties of musical sound such as pitch, dynamics, time, and timbre. For background, music notes are presented on a staff, a set of five lines each possessing its own pitch. A clef serves to communicate the pitch associated with each of these five lines. In this way, the pitch of a given note is determined by its vertical placement on the staff i.e. it's pitch is consistent with the pitch of the staff line or space on which it rests. The temporal nature of music is represented by the horizontal traversal of the staff. Thus music notation presents information in two dimensions. Certain subsets of the alphabet serve to communicate note duration, relative durations of silence, temporary changes in pitch, dynamics (loudness), and note articulations (changes in musical sound). In practice, certain symbols have almost unlimited variations in representation. As a result, building a computer vision system that understands musical notation is a difficult, but achievable goal.
 
@@ -35,7 +52,7 @@ Standard input to OMR system.
 Over time, a general framework for OMR systems has been developed. The framework breaks down the overarching recognition problem into four simpler operations that aid in the recognition, representation and storage of musical documents in a machine-readable format. The framework can be summarized as follows:
 
 1. Image Processing
-2. Music Primitive Detection 
+2. Music Primitive Detection
 3. Music Primitive Classification
 4. Semantic Reconstruction
 
@@ -54,7 +71,7 @@ The horizontal projection of a music score excerpt.
 
 ### Music Primitive Detection and Classification
 
-Music primitives are both segmented and classified using a template matching approach to image classification.The classification method detects primitives by comparing an image segment to a library of labelled primitive templates, staff-by-staff, primitive by primitive, and classifies as a specific music primitive if its similarity exceeds a specified threshold. Because staff positions have been determined beforehand, along with their *staff line thickness* and *staff space height*, note pitch values can be determined by observing which row index the center of a note's bounding box lies; it's pitch is consistent with the pitch of the staff line or space sharing that particular row index. 
+Music primitives are both segmented and classified using a template matching approach to image classification.The classification method detects primitives by comparing an image segment to a library of labelled primitive templates, staff-by-staff, primitive by primitive, and classifies as a specific music primitive if its similarity exceeds a specified threshold. Because staff positions have been determined beforehand, along with their *staff line thickness* and *staff space height*, note pitch values can be determined by observing which row index the center of a note's bounding box lies; it's pitch is consistent with the pitch of the staff line or space sharing that particular row index.
 
 Eighth notes, which are originally classified as quarter notes owing to the possession of an equivalent note head, are retroactively corrected by determining if an eighth flag is in the vicinity of the note head or whether it is beamed with adjacent notes. Beaming is determined by determining if the column central to adjacent notes contains more black pixels than expected, i.e. more then five times the *staff line thickness*. I had to devise a way to detect key signatures; because every staff is initiated by its key signature, it could easily be identified by counting the number of accidentals located at the beginning of the ordered list of detected music primitives on a given staff. Subsequent to this operation, accidentals resulting from the key are applied to the note primitives.
 
@@ -70,5 +87,3 @@ Staff Detection on 'Mary Had a Little Lamb' input example
 
 ![alt text](https://github.com/anyati/cadenCV/blob/master/resources/README/image8.jpg)
 Music Primitive Detection and Classification on 'Mary Had a Little Lamb' input example
-
-
