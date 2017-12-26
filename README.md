@@ -87,3 +87,7 @@ Staff Detection on 'Mary Had a Little Lamb' input example
 
 ![alt text](https://github.com/anyati/cadenCV/blob/master/resources/README/image8.jpg)
 Music Primitive Detection and Classification on 'Mary Had a Little Lamb' input example
+
+### Project Paper
+
+To learn more about the cadenCV: Optical Music Recognition system, read the accompanying paper: http://bit.ly/2pARSMy
