@@ -39,7 +39,7 @@ Typical music primitives used in sheet music.
 ![alt text](https://github.com/anyati/cadenCV/blob/master/resources/README/image3.jpg)
 Bi-dimensional structure of the music staff.
 
-## System Scope
+## V. System Scope
 
 For the purpose of this project, I decided to restrict the scope of the alphabet space considered. Consequently, my research sought to develop a OMR system capable of recognizing and representing high resolution sheet music written for a single monophonic musical instrument using note or rest values equal to or greater than eighth notes, expressed on a staff consisting of either the treble or the bass clef and one of the common time signatures, i.e. common time, 2/4, 4/4, 3/4 or 6/8. Consequently, my recognition system cannot perform *key* or *time signature alterations*, or *detect tempo demarcations*, *harmony*, *multi-instrumentation*, *braced-joined staffs*, *tuplets*, *repeats*, *slurs* and *ties*, *articulation* and *dynamic marks*, or *dotted rhythms*.
 
@@ -47,7 +47,7 @@ For the purpose of this project, I decided to restrict the scope of the alphabet
 Standard input to OMR system.
 
 
-## System Framework
+## VI. System Framework
 
 Over time, a general framework for OMR systems has been developed. The framework breaks down the overarching recognition problem into four simpler operations that aid in the recognition, representation and storage of musical documents in a machine-readable format. The framework can be summarized as follows:
 
@@ -88,6 +88,6 @@ Staff Detection on 'Mary Had a Little Lamb' input example
 ![alt text](https://github.com/anyati/cadenCV/blob/master/resources/README/image8.jpg)
 Music Primitive Detection and Classification on 'Mary Had a Little Lamb' input example
 
-### Project Paper
+## VII. Project Paper
 
 To learn more about the cadenCV: Optical Music Recognition system, read the accompanying paper: http://bit.ly/2pARSMy
