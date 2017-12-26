@@ -17,7 +17,7 @@ For OMR:
 
 To run the OMR system, run the following command in the terminal:
 
-$ python main.py "image"
+    `$ python main.py "image"`
 
 where *image* is a placeholder for the sheet music bitmap file. (Accepts *.jpg* and *.png*)
 
