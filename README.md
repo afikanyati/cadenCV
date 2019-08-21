@@ -91,3 +91,7 @@ Music Primitive Detection and Classification on 'Mary Had a Little Lamb' input e
 ## VII. Project Paper
 
 To learn more about the cadenCV: Optical Music Recognition system, read the accompanying paper: http://bit.ly/2lfe8Gv
+
+## VII. Output Example
+
+To hear an output example from cadenCV (Mary had a Little Lamb), visit: https://www.youtube.com/watch?v=amL6wHfAShw
